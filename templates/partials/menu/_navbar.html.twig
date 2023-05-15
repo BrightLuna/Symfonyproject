@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg fw-bold text-light {% if route_name == "page.home" %}bg-transparent{% else %}bg-dark{% endif %}">
+<nav class="navbar navbar-expand-lg fw-bold navbar-dark {% if route_name == "page.home" %}bg-transparent{% else %}bg-dark{% endif %}">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ path('page.home') }}">
         <img src="{{ asset('logo.svg') }}" alt="Logo" width="100">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link {% if route_name == "page.home" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('page.home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if route_name == "page.test" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('page.test') }}">Test</a>
         </li>
       </ul>
     </div>
