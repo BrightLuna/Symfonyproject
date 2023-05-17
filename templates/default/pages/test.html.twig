@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} - Test page{% endblock %}
+
+{% block body %}
+
+    <h1>Testing page</h1>
+    <div class="row">
+        {% include "partials/components/_rules_navigation.html.twig" %}
+    </div>
+    <div class="row">
+        {% include "partials/components/_rules_text.html.twig" %}
+    </div>
+
+{% endblock %}
