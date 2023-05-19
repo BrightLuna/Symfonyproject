@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
+use App\Repository\UserRepository;
+use App\Service\SteamApiService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PagesController extends AbstractController
 {
+
     #[Route('/', name: 'page.home')]
     public function home(): Response
     {
@@ -15,9 +19,17 @@ class PagesController extends AbstractController
     }
 
     #[Route('/test', name: 'page.test')]
-    public function test(): Response
+    public function test(UserRepository $users): Response
     {
-        return $this->render('pages/test.html.twig');
+        return $this->render('pages/test.html.twig', [
+            'users' => $users->findAll()
+        ]);
+    }
+
+    #[Route('/success', name: 'page.success')]
+    public function success(): Response
+    {
+        return $this->render('pages/success.html.twig');
     }
 
 }

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Connect to Steam{% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center vh-100 align-items-center">
+    <div class="row col-12">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h3 class="card-title text-center">Connect with Steam</h3>
+                <div class="d-flex justify-content-center">
+                    {% include '@KnojectorSteamAuthentication/button.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

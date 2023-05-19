@@ -35,6 +35,18 @@
             "migrations/.gitignore"
         ]
     },
+    "knojector/steam-authentication-bundle": {
+        "version": "1.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "e52348a77b9b3e6f068cf51422289a52f331b5d0"
+        },
+        "files": [
+            "config/packages/knojector_steam_authentication.yaml"
+        ]
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {

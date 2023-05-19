@@ -9,11 +9,28 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {% if route_name == "page.home" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('page.home') }}">Home</a>
+          <a class="ms-2 nav-link {% if route_name == "page.home" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('page.home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if route_name == "page.test" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('page.test') }}">Test</a>
+          <a class="ms-2 nav-link {% if route_name == "page.test" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('page.test') }}">Test</a>
         </li>
+        {% if app.user %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ app.user.avatar }}" class="rounded"> <span class="ms-2">{{ app.user.username }}</span></a>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" disabled>Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger fw-bold" href="{{ path('auth.logout') }}">Logout</a></li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="ms-2 nav-link {% if route_name == "auth.login" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('auth.login') }}">Connect</a>
+        </li>
+        {% endif %}
+        
       </ul>
     </div>
   </div>
