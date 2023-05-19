@@ -15,7 +15,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 #[AsCommand(
     name: 'v:purge-user',
-    description: 'Add a short description for your command',
+    description: '[V Symfony][DEV TOOL] Purge Users',
 )]
 class PurgeUserCommand extends Command
 {
