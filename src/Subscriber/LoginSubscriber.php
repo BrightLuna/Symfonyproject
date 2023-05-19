@@ -50,7 +50,8 @@ class LoginSubscriber implements EventSubscriberInterface
                 ->setAvatarMedium($details['avatarmedium'])
                 ->setAvatarFull($details['avatarfull'])
                 ->setProfileUrl($details['profileurl'] ?? null)
-                ->setRoles(['ROLE_STEAM']);
+                ->setRoles(['ROLE_STEAM'])
+                ->setWhitelisted(0);
 
             $manager = $this->managerRegistry->getManager();
             $manager->persist($user);

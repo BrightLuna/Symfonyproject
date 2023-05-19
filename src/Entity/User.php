@@ -35,6 +35,9 @@ class User implements UserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatarfull = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $whitelisted;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -146,6 +149,18 @@ class User implements UserInterface
     public function setAvatarfull(?string $avatarfull): self
     {
         $this->avatarfull = $avatarfull;
+
+        return $this;
+    }
+
+    public function isWhitelisted(): ?bool
+    {
+        return $this->whitelisted;
+    }
+
+    public function setWhitelisted(bool $whitelisted): self
+    {
+        $this->whitelisted = $whitelisted;
 
         return $this;
     }

@@ -6,4 +6,11 @@
 
     <h1>Bienvenue</h1>
 
+    {% if app.user %}
+        <pre>
+            {{ dump(app.user) }}
+        </pre>
+    {% endif %}
+    
+
 {% endblock %}
