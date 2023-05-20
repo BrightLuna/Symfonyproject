@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
-use App\Service\SteamApiService;
+use App\Service\DiscordService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,10 +19,12 @@ class PagesController extends AbstractController
     }
 
     #[Route('/test', name: 'page.test')]
-    public function test(UserRepository $users): Response
+    public function test(UserRepository $users, DiscordService $discord): Response
     {
+        $invitationLink = $discord->getDiscordInvitationLink();
         return $this->render('pages/test.html.twig', [
-            'users' => $users->findAll()
+            'users' => $users->findAll(),
+            'discordLink' => $invitationLink
         ]);
     }
 

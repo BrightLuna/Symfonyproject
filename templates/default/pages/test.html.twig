@@ -5,6 +5,9 @@
 {% block body %}
 
     <h1>Testing page</h1>
+    
+    {% include "partials/components/_discord_button.html.twig" with { discordLink: discordLink }%}
+    
 
     <table class="table table-bordered mt-4">
     <thead>
