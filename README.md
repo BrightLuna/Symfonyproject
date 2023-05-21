@@ -36,3 +36,15 @@ _________________
         with { discordLink: discordLink } 
     %}
     ```
+
+## Usage for Discord Server Members Count
+
+1. Create or Use your own Bot Discord
+2. Invite to your Discord Server
+3. Find your Bot Token on Developer Portal
+4. Go to ```.env``` file and enter your key on ```DISCORD_BOT_TOKEN```
+5. Call ```DiscordService.php``` on your controller
+6. Use Method 
+    ```php
+    $discordUsers = $discord->getServerUserCount();
+    ```
