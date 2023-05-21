@@ -26,8 +26,9 @@
           </ul>
         </li>
         {% else %}
-        <li class="nav-item">
-          <a class="ms-2 nav-link {% if route_name == "auth.login" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('auth.login') }}">Connect</a>
+        <li class="nav-item ms-4">
+          {# <a class="ms-2 nav-link {% if route_name == "auth.login" %}active{% else %}{% endif %}" aria-current="page" href="{{ path('auth.login') }}">Connect</a> #}
+          {% include '@KnojectorSteamAuthentication/button.html.twig' %}
         </li>
         {% endif %}
         
