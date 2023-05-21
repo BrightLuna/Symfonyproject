@@ -12,21 +12,23 @@ class PagesController extends AbstractController
 {
 
     #[Route('/', name: 'page.home')]
-    public function home(): Response
+    public function home(DiscordService $discord): Response
     {
-        return $this->render('pages/home.html.twig');
+        // Invitation Link for your server discord
+        $invitationLink = $discord->getDiscordInvitationLink();
+        $discordUsers = $discord->getServerUserCount();
+        return $this->render('pages/home.html.twig', [
+            'discordLink' => $invitationLink,
+            'discordUsers' => $discordUsers
+        ]);
     }
 
     #[Route('/test', name: 'page.test')]
-    public function test(UserRepository $users, DiscordService $discord): Response
+    public function test(UserRepository $users): Response
     {
-        $invitationLink = $discord->getDiscordInvitationLink();
-        $discordUsers = $discord->getServerUserCount();
         
         return $this->render('pages/test.html.twig', [
-            'users' => $users->findAll(),
-            'discordLink' => $invitationLink,
-            'discordUsers' => $discordUsers
+            'users' => $users->findAll()
         ]);
     }
 

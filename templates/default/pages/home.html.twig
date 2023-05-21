@@ -4,4 +4,22 @@
 
 {% block body %}
 
+    <div class="container d-flex align-items-center vh-100 justify-content-center text-white">
+        <div class="row mb-4">
+            <div class="col-sm-12">
+                <h1 class="fw-bold text-center">Welcome to V-Symfony</h1>
+            </div>
+            <div class="col-sm-12">  
+                <div class="d-flex align-items-center justify-content-center">
+                    {% include "partials/components/_discord_button.html.twig" 
+                        with { 
+                            discordLink: discordLink, 
+                            discordUsers: discordUsers 
+                        } 
+                    %}
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
