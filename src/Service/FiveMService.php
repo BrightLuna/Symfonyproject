@@ -2,9 +2,16 @@
 
 namespace App\Service;
 
+/**
+ * Experimental
+ * @author amtbzh@gmail.com
+ */
 class FiveMService
 {
 
+    /**
+     * Check connection from your server FiveM
+     */
     public function checkFiveMServerStatus()
     {
         $ip = '104.143.3.92';
