@@ -4,28 +4,32 @@
 
 {% block body %}
 
-    <h1>Testing page</h1>
-    
-    {% include "partials/components/_discord_button.html.twig" with { discordLink: discordLink }%}
-    
-
+    <h1>Testing page</h1>    
+    <hr>
+    <h3>All users in application</h3>
     <table class="table table-bordered mt-4">
-    <thead>
-        <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Username</th>
-        <th scope="col">Steam ID</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-        <th scope="row">{{ user.id }}</th>
-        <td>{{ user.username }}</td>
-        <td>{{ user.steamid }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Username</th>
+            <th scope="col">Steam ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.steamid }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
+
+    <hr>
+    {% include "partials/components/_discord_button.html.twig" 
+        with { discordLink: discordLink } 
+    %}
+    <h5>Actual : {{ discordUsers }} members on Discord Server</h5>
 
 {% endblock %}

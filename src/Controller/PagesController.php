@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\DiscordService;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,9 +21,12 @@ class PagesController extends AbstractController
     public function test(UserRepository $users, DiscordService $discord): Response
     {
         $invitationLink = $discord->getDiscordInvitationLink();
+        $discordUsers = $discord->getServerUserCount();
+        
         return $this->render('pages/test.html.twig', [
             'users' => $users->findAll(),
-            'discordLink' => $invitationLink
+            'discordLink' => $invitationLink,
+            'discordUsers' => $discordUsers
         ]);
     }
 

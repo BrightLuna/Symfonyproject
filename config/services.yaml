@@ -29,6 +29,7 @@ services:
         arguments:
             $discordServerId: '%env(DISCORD_SERVER_ID)%'
             $discordServerInv: '%env(DISCORD_SERVER_LINK)%'
+            $discordToken: '%env(DISCORD_BOT_TOKEN)%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
