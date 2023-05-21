@@ -18,6 +18,13 @@ class DiscordService
     /** @var string */
     private $discordServerInv;
 
+    /**
+     * Discord Service Constructor
+     *
+     * @param integer $discordServerId
+     * @param string $discordServerInv
+     * @param string $discordToken
+     */
     public function __construct(
         int $discordServerId, 
         string $discordServerInv,
@@ -28,16 +35,31 @@ class DiscordService
         $this->discordToken = $discordToken;
     }
 
+    /**
+     * Function for your Server ID
+     *
+     * @return string
+     */
     public function getDiscordServerId(): string
     {
         return sprintf('https://discord.gg/%s', $this->discordServerId);
     }
 
+    /**
+     * Function for your Server Invitation Link
+     *
+     * @return string
+     */
     public function getDiscordInvitationLink(): string
     {
         return sprintf('https://discord.gg/%s', $this->discordServerInv);
     }
 
+    /**
+     * Function for Count all members on your server
+     *
+     * @return integer
+     */
     public function getServerUserCount(): int
     {
         $httpClient = HttpClient::create([
