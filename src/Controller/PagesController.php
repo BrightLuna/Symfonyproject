@@ -12,15 +12,9 @@ class PagesController extends AbstractController
 {
 
     #[Route('/', name: 'page.home')]
-    public function home(DiscordService $discord): Response
+    public function home(): Response
     {
-        // Invitation Link for your server discord
-        $invitationLink = $discord->getDiscordInvitationLink();
-        $discordUsers = $discord->getServerUserCount();
-        return $this->render('pages/home.html.twig', [
-            'discordLink' => $invitationLink,
-            'discordUsers' => $discordUsers
-        ]);
+        return $this->render('pages/home.html.twig');
     }
 
     #[Route('/test', name: 'page.test')]

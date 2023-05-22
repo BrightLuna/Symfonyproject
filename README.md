@@ -26,16 +26,6 @@ _________________
 1. Find your Discord Invitation Link
 2. Go to ```.env``` file and enter your key on ```DISCORD_SERVER_LINK```
 3. Call ```DiscordService.php``` on your controller
-4. Use Method 
-    ```php
-    $invitationLink = $discord->getDiscordInvitationLink();
-    ```
-5. Include the template ```_discord_button.html.twig``` in partials folder
-    ```twig
-    {% include "partials/components/_discord_button.html.twig" 
-        with { discordLink: discordLink } 
-    %}
-    ```
 
 ## Usage for Discord Server Members Count
 
@@ -48,3 +38,11 @@ _________________
     ```php
     $discordUsers = $discord->getServerUserCount();
     ```
+
+## Usage for Discord Button on Homepage
+
+1. Call Twig components 
+> 
+```twig
+    {{ component('DiscordButton') }}
+```

@@ -11,12 +11,7 @@
             </div>
             <div class="col-sm-12">  
                 <div class="d-flex align-items-center justify-content-center">
-                    {% include "partials/components/_discord_button.html.twig" 
-                        with { 
-                            discordLink: discordLink, 
-                            discordUsers: discordUsers 
-                        } 
-                    %}
+                    {{ component('DiscordButton') }}
                 </div>
             </div>
         </div>
