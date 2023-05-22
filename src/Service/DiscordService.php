@@ -10,6 +10,9 @@ use Symfony\Component\HttpClient\HttpClient;
 class DiscordService 
 {
 
+    /**
+     * @var string
+     */
     private $discordToken;
 
     /** @var int */
@@ -75,6 +78,5 @@ class DiscordService
         //dd($userCount);
         return $userCount;
     }
-
 
 }

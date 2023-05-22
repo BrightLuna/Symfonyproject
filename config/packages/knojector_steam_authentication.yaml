@@ -1,4 +1,4 @@
 # https://github.com/knojector/SteamAuthenticationBundle for configuration documentation
 knojector_steam_authentication:
-    login_success_redirect: 'page.success'
-    login_failure_redirect: 'page.home'
+    login_success_redirect: 'page.home'
+    login_failure_redirect: 'page.test'

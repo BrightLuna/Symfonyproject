@@ -12,12 +12,12 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    <body class="{% if route_name == "page.home" %}home{% else %}{% endif %}">
+    <body {% if route_name == "page.home" %}class="home"{% else %}{% endif %}>
         {% block menu %}
             {% include "partials/menu/_navbar.html.twig" %}
         {% endblock %}
         {% block main %}
-            <div class="container mt-4">
+            <div class="container container-main {% if route_name == "page.home" %}{% else %}mt-4{% endif %}">
                 {% block body %}{% endblock %}
             </div>
         {% endblock %}

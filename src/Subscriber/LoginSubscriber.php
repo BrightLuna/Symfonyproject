@@ -33,6 +33,7 @@ class LoginSubscriber implements EventSubscriberInterface
      * Create new user if not exist
      *
      * @param FirstLoginEvent $event
+     * @return array
      */
     public function onFirstLogin(FirstLoginEvent $event)
     {

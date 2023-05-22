@@ -11,6 +11,17 @@
     overflow: hidden;
 }
 
+.container-main {
+    margin-bottom: 5rem !important;
+}
+
+.vh-80 {
+    height: 80vh !important;
+}
+
+/**
+    Custom Hover Effect
+*/
 a.nav-link {
     position: relative;
 }

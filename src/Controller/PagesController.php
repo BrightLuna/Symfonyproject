@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Repository\UserRepository;
 use App\Service\DiscordService;
-use App\Service\FiveMServerService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,12 +29,6 @@ class PagesController extends AbstractController
         return $this->render('pages/test.html.twig', [
             'users' => $users->findAll()
         ]);
-    }
-
-    #[Route('/success', name: 'page.success')]
-    public function success(): Response
-    {
-        return $this->render('pages/success.html.twig');
     }
 
 }
