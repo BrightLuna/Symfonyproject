@@ -13,6 +13,7 @@
             <th scope="col">Id</th>
             <th scope="col">Username</th>
             <th scope="col">Steam ID</th>
+            <th scope="col">ROLE</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,11 @@
                     <th scope="row">{{ user.id }}</th>
                     <td>{{ user.username }}</td>
                     <td>{{ user.steamid }}</td>
+                    <td>
+                    {% for role in user.roles %}
+                        {{ role }}
+                    {% endfor %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

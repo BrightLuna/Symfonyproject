@@ -2,22 +2,21 @@
 
 namespace App\Command;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 #[AsCommand(
-    name: 'v:purge-user',
-    description: '[V Symfony][DEV TOOL] Purge Users',
+    name: 'v:set-admin',
+    description: '[V Symfony] Set Admin with Steam ID',
 )]
-class PurgeUserCommand extends Command
+class SetAdminCommand extends Command
 {
 
     /**
@@ -38,30 +37,33 @@ class PurgeUserCommand extends Command
     }
 
     protected function configure(): void
-    {}
+    {
+        $this
+            ->addArgument('steamID', InputArgument::REQUIRED, 'Steam id Of User')
+        ;
+    }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
+        
+        $steamID = $input->getArgument('steamID');
 
-        $usersCount = 0;
+        // Find the user by Steam ID
+        $userRepository = $this->entityManager->getRepository(User::class);
+        $user = $userRepository->findOneBy(['steamID' => $steamID]);
 
-        while ($users = $this->users->findAll()) {
-            foreach($users as $user) 
-            {
-                $this->entityManager->remove($user); // Delete users on cascade
-                $this->entityManager->flush(); // Executes all deletions
-                $this->entityManager->clear(); // Detaches all object from Doctrine
-                $usersCount += count($users); // Count all deletions
-            }
+        if (!$user) {
+            $io->error("[V Symfony] Steam ID: $steamID not exist, User not found");
+            return Command::FAILURE;
         }
 
-        if ($usersCount) {
-            $io->success("[V Symfony] $usersCount users(s) have been deleted.");
-        } else {
-            $io->error('[V Symfony] No users in database.');
-        }
+        // Change the user's role to ROLE_ADMIN
+        $user->setRoles(['ROLE_ADMIN']);
+        $username = $user->getUsername();
+        $this->entityManager->flush();
 
+        $io->success("[V Symfony] $username user, Role was change for Admin");
         return Command::SUCCESS;
     }
 }
